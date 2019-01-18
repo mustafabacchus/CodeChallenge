@@ -20,29 +20,21 @@ arr4 = [['a', 'e', 'c', 'd', 'm'],
 
 
 def vowel_square(arr):
-    def is_vowel(char):
-        return char in ['a', 'e', 'i', 'o', 'u']
-
     row = 0
     col = 0
-    col_len = len(arr[0]) - 1
-    row_len = len(arr) - 1
-    vowel_pos = []
+    vowel_position = []
 
     # Row navigation
-    while row < row_len:
+    while row < len(arr) - 1:
         # Column navigation
-        if col < col_len:
-            # Get the values in a square
-            char1 = arr[row][col]
-            char2 = arr[row][col + 1]
-            char3 = arr[row + 1][col]
-            char4 = arr[row + 1][col + 1]
+        if col < len(arr[0]) - 1:
+            # Get the values in the square
+            candidates = [arr[row][col], arr[row][col + 1],
+                          arr[row + 1][col], arr[row + 1][col + 1]]
             # Check if values are vowels
-            if is_vowel(char1) and is_vowel(char2) and \
-                    is_vowel(char3) and is_vowel(char4):
+            if len([char for char in candidates if char in ['a', 'e', 'i', 'o', 'u']]) == 4:
                 # Append the position of the vowel square
-                vowel_pos.append([row, col])
+                vowel_position.append([row, col])
             col += 1
         # Reset columns and increment row when columns are complete
         else:
@@ -50,10 +42,10 @@ def vowel_square(arr):
             row += 1
 
     # Display results
-    if not vowel_pos:
+    if not vowel_position:
         return 'not found'
     # Get the top left most vowel square
-    top_left = min(vowel_pos)
+    top_left = min(vowel_position)
     return str(top_left[0]) + '-' + str(top_left[1])
 
 
