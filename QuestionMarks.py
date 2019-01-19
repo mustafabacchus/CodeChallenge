@@ -6,10 +6,10 @@ q5 = 'aa6?9'                       # False
 
 
 def question_marks(query):
-    index = 0
-    pair_indices = []
     indices_of_pairs = []
 
+    index = 0
+    pair_indices = []
     for char in query:
         # Append index if digit
         if char.isdigit():

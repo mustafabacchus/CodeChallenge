@@ -20,11 +20,11 @@ arr4 = [['a', 'e', 'c', 'd', 'm'],
 
 
 def vowel_square(arr):
-    row = 0
-    col = 0
     vowel_position = []
 
     # Row navigation
+    row = 0
+    col = 0
     while row < len(arr) - 1:
         # Column navigation
         if col < len(arr[0]) - 1:

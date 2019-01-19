@@ -31,9 +31,10 @@ def get_distance(data1, data2):
 
 
 def closest_enemy(arr):
-    # Find the position of the 1 and 2's
     enemies = []
     player = None
+
+    # Find the position of the 1 and 2's
     for row in range(len(arr)):
         for col in range(len(arr[0])):
             if arr[row][col] == 1:
