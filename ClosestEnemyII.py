@@ -45,21 +45,21 @@ def closest_enemy(arr):
     if enemies:
         # Get the position of the closest 2
         shortest_distance = min([get_distance(player, enemy) for enemy in enemies])
-        enemy = min([enemy for enemy in enemies if get_distance(player, enemy) == shortest_distance])
+        enemy = [enemy for enemy in enemies if get_distance(player, enemy) == shortest_distance].pop()
 
         moves = []
         while shortest_distance > 0:
             # Possible positions to move
-            up = [player[0] - 1, player[1]] if player[0] != 0 else [len(arr)-1, player[1]]
-            down = [player[0] + 1, player[1]] if player[0] != len(arr[0])-1 else [0, player[1]]
-            right = [player[0], player[1] + 1] if player[1] != len(arr[0])-1 else [player[0], 0]
-            left = [player[0], player[1] - 1] if player[1] != 0 else [player[0], len(arr[0])-1]
+            up = [player[0] - 1, player[1]] if player[0] != 0 else [len(arr) - 1, player[1]]
+            down = [player[0] + 1, player[1]] if player[0] != len(arr[0]) - 1 else [0, player[1]]
+            right = [player[0], player[1] + 1] if player[1] != len(arr[0]) - 1 else [player[0], 0]
+            left = [player[0], player[1] - 1] if player[1] != 0 else [player[0], len(arr[0]) - 1]
             positions = [up, down, right, left]
 
             # Find the position that moves closest to the 2
             shortest_distance = min([get_distance(position, enemy) for position in positions])
             # Update the 1's position with the move
-            player = min([position for position in positions if get_distance(position, enemy) == shortest_distance])
+            player = [position for position in positions if get_distance(position, enemy) == shortest_distance].pop()
             moves.append(player)
         return len(moves)
     return 0
@@ -69,3 +69,4 @@ print(closest_enemy(arr1))
 print(closest_enemy(arr2))
 print(closest_enemy(arr3))
 print(closest_enemy(arr4))
+
